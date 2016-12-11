@@ -23,12 +23,12 @@ catch (PDOException $exception)
 
 
 $filmIds=$_POST['films'];
-$query="DELETE FROM films WHERE id=:filmId";
+$query="DELETE FROM films WHERE films.id=:id";
 $stmt=$conn->prepare($query);
 $affected_rows=0;
 foreach($filmIds as $filmId)
 {
-	$stmt->bindValue(':filmId',$filmId);
+	$stmt->bindValue(':id',$filmId);
 	$affected_rows += $stmt->execute();	
 }
 echo "<p>Deleted ".$affected_rows." films</p>";
