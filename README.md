@@ -1,10 +1,10 @@
 #MVC with Functions
 
-* You should have a films table in your database already from term 1. If you don't, import films.sql and check this has worked. 
+* You should have a films table in your database already from term 1. If you don't, import films.sql into phpmyadmin and check this has worked. 
+* Change the connection settings in list.php so that it works with your database.
+* Put the  website from the repository on a server and check list.php works. A user should be able to view a list of all films from the database.
 
-* Put the entire website from the repository on a server and check it works. A user should be able to view a list of films, view details for a film, insert new films and delete films. We have looked at all this code previously.
-
-* Try and re-structure this website so that it uses an MVC structure. 
+* Now try and re-structure this website so that it uses an MVC structure. 
 
 To start with create a new file, film-model.php. Add the following code:
 
