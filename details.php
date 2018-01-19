@@ -24,6 +24,12 @@ $conn=NULL;
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head>
 <body>
+<ul>
+<li><a href="create.php">Create</a></li>
+<li><a href="list.php">Read</a></li>
+<li><a href="edit-list.php">Update</a></li>
+<li><a href="delete-list.php">Delete</a></li>
+</ul>
 <?php
 //simple validation to see if we found a film
 if($film){

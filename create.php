@@ -6,10 +6,10 @@
 </head>
 <body>
 <ul>
-	<li><a href="create.php">Create</a></li>
-	<li><a href="edit-list.php">Update</a></li>
-	<li><a href="delete-list.php">Delete</a></li>
-	<li><a href="search.php">Search</a></li>
+<li><a href="create.php">Create</a></li>
+<li><a href="list.php">Read</a></li>
+<li><a href="edit-list.php">Update</a></li>
+<li><a href="delete-list.php">Delete</a></li>
 </ul>	
 	
 <h1>Add a new film</h1>

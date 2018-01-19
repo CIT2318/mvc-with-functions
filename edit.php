@@ -27,10 +27,10 @@ $conn=NULL;
 </head>
 <body>
 <ul>
-	<li><a href="create.php">Create</a></li>
-	<li><a href="edit-list.php">Update</a></li>
-	<li><a href="delete-list.php">Delete</a></li>
-	<li><a href="search.php">Search</a></li>
+<li><a href="create.php">Create</a></li>
+<li><a href="list.php">Read</a></li>
+<li><a href="edit-list.php">Update</a></li>
+<li><a href="delete-list.php">Delete</a></li>
 </ul>
 <h1>Edit film details</h1>
 <form action="update.php" method="post">
@@ -43,7 +43,6 @@ $conn=NULL;
 <input type="text" id="year" name="year" value="<?php echo $film["year"];?>">
 <label for="duration">Duration:</label>
 <input type="text" id="duration" name="duration" value="<?php echo $film["duration"];?>">
-<label for="certificate">Certificate:</label>
 <input type="submit" name="submitBtn" value="Update film details">
 </form>
 
