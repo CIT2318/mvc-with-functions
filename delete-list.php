@@ -7,29 +7,19 @@ catch (PDOException $exception)
 	echo "Oh no, there was a problem" . $exception->getMessage();
 }
 
-//This is a simple example we would normally do some validation here
-
-//the id from the query string e.g. details.php?id=4
-$filmId=$_GET['id'];
-
-//now delete the film itself
-$stmt = $conn->prepare("DELETE FROM films WHERE films.id = :id");
-$stmt->bindValue(':id',$filmId);
-$affected_rows=$stmt->execute();
-
-if($affected_rows==1){
-    $msg="<p>Deleted film with id of ".$filmId." from the database.</p>";
-}else{
-    $msg="<p>There was a problem deleting the record.</p>";
-}
+//select all the films
+$query = "SELECT * FROM films";
+$resultset = $conn->query($query);
+$films = $resultset->fetchAll();
 $conn=NULL;
+
 ?>
 
 
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Delete the film</title>
+<title>Delete films</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 </head>
 <body>
@@ -40,7 +30,15 @@ $conn=NULL;
 	<li><a href="search.php">Search</a></li>
 </ul>
 <?php
-echo $msg;
+foreach ($films as $film) {
+    echo "<p>";
+    echo $film["title"];
+    //outputs a hyperlink for each film e.g. <a href="details.php?id=4">delete</a>
+    //each hyperlink has a query string (look back at practical 1) that specifies which film has been clicked on
+	echo " (<a href='delete.php?id=" . $film["id"] . "'>delete</a>)";
+    echo "</p>";
+}
+
 ?>
 </body>
 </html>
