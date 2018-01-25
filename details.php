@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 try{
        $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
@@ -45,13 +45,4 @@ else
 ?>
 </body>
 </html>
-=======
 
-<?php
-require_once("models/film-model.php");
-$filmId=$_GET['id'];
-$film=getFilmById($filmId);
-$pageTitle="Film details";
-include("views/details-view.php");
-?>
->>>>>>> 1803d5ed52c5b6b1b052252b0132742fa0a04abb

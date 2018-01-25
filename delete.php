@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 try{
        $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
 }
@@ -12,17 +12,7 @@ catch (PDOException $exception)
 
 //the id from the query string e.g. details.php?id=4
 $filmId=$_GET['id'];
-=======
-require_once("models/film-model.php");
-$filmIds=$_POST['films'];
-$affected_rows = 0;
-foreach($filmIds as $filmId)
-{
-	$affected_rows += deleteFilm($filmId);
-}
-$pageTitle="Deleting films";
-include("views/delete-view.php");
->>>>>>> 1803d5ed52c5b6b1b052252b0132742fa0a04abb
+
 
 //now delete the film itself
 $stmt = $conn->prepare("DELETE FROM films WHERE films.id = :id");
@@ -36,7 +26,6 @@ if($affected_rows==1){
 }
 $conn=NULL;
 ?>
-<<<<<<< HEAD
 
 
 <!DOCTYPE HTML>
@@ -57,5 +46,4 @@ echo $msg;
 ?>
 </body>
 </html>
-=======
->>>>>>> 1803d5ed52c5b6b1b052252b0132742fa0a04abb
+

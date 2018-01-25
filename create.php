@@ -1,4 +1,3 @@
-<<<<<<< HEAD:create.php
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -26,11 +25,5 @@
 
 </body>
 </html>
-=======
-<?php
 
-$pageTitle="Insert new film";
-include("views/insert-form-view.php");
 
-?>
->>>>>>> 1803d5ed52c5b6b1b052252b0132742fa0a04abb:insert-form.php

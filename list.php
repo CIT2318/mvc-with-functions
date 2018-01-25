@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 try{
        $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
@@ -40,14 +39,4 @@ foreach ($films as $film) {
     echo "</a>";
     echo "</p>";
 }
-=======
-
-<?php
-
-require_once("models/film-model.php");
-$films=getAllFilms();
-$pageTitle="List all films";
-include("views/list-view.php");
->>>>>>> 1803d5ed52c5b6b1b052252b0132742fa0a04abb
-
 ?>
