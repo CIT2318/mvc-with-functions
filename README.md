@@ -36,7 +36,8 @@ function getAllFilms()
 ```
 
 * Open *list.php* in a text editor. 
-* Modify *list.php* so that it calls the *getAllFilms()** function. See the lecture slides if you get stuck. 
+* Use an include or require statement to include the *film-model.php*.
+* Modify *list.php* so that it calls the *getAllFilms()* function. See the lecture slides if you get stuck. 
 * Separate the printing of the films as hyperlinks into a view (just like we did last week when separating logic from presentation).
 * *list.php* (your controller) should then look something like the following:
 
