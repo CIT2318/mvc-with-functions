@@ -1,7 +1,7 @@
 # MVC with Functions
 
 This practical looks at moving from an application built using single flat PHP files to an MVC structure. It uses functions to structure code. You need a good grasp of basic function concepts - arguments, parameters, returning values etc. before attempting this. 
-* You should have a films table in your database already from term 1. If you don't, import films.sql into phpmyadmin and check this has worked. 
+* You should have a films table in your database already from term 1. If you don't, you can download it from https://github.com/CIT2318/intro-to-mysql-sql/blob/master/films.sql. Open up phpmyadmin to check this works. 
 * Change the connection settings in list.php so that it works with your database.
 * Put the  list.php on a server and check it works. A user should be able to view a list of all films from the database.
 * Now try and re-structure this PHP page so that it uses an MVC structure. 
