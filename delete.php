@@ -1,7 +1,8 @@
 <?php
 
 try{
-       $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
+    $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
+    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
 catch (PDOException $exception) 
 {
@@ -11,18 +12,20 @@ catch (PDOException $exception)
 //This is a simple example we would normally do some validation here
 
 //the id from the query string e.g. details.php?id=4
-$filmId=$_GET['id'];
-
-
-//now delete the film itself
-$stmt = $conn->prepare("DELETE FROM films WHERE films.id = :id");
-$stmt->bindValue(':id',$filmId);
-$affected_rows=$stmt->execute();
-
-if($affected_rows==1){
-    $msg="<p>Deleted film with id of ".$filmId." from the database.</p>";
+//Simple validation
+if(isset($_POST['ids'])){
+	//the ids come from the form as an array e.g. ids=[3,6,7]
+	$ids=$_POST['ids'];
+	$numFilms=count($ids);
+	//prepared statement uses the id to delete a single film
+	$stmt = $conn->prepare("DELETE FROM films WHERE films.id = :id");
+	//loop over the array of ids to delete multiple students
+	foreach($ids as $id){
+		$stmt->bindValue(':id',$id);
+		$stmt->execute();
+	}
 }else{
-    $msg="<p>There was a problem deleting the record.</p>";
+    $msg="<p>No films selected.</p>";
 }
 $conn=NULL;
 ?>
@@ -42,7 +45,11 @@ $conn=NULL;
 <li><a href="delete-list.php">Delete</a></li>
 </ul>
 <?php
-echo $msg;
+if(isset($msg)){
+	echo "<p>{$msg}</p>";
+}else{
+	echo "Deleted {$numFilms} films";
+}
 ?>
 </body>
 </html>
