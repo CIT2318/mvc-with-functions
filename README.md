@@ -1,54 +1,31 @@
 # MVC with Functions
 
-This practical looks at moving from an application built using single flat PHP files to an MVC structure. It uses functions to structure code. You need a good grasp of basic function concepts - arguments, parameters, returning values etc. before attempting this. 
-* You should have a films table in your database already from term 1. If you don't, you can download it from https://github.com/CIT2318/intro-to-mysql-sql/blob/master/films.sql. Open up phpmyadmin to check this works. 
+This practical looks at moving from an application built using single flat PHP files to an MVC structure. It uses functions to structure code. You need a good grasp of basic function concepts - arguments, parameters, returning values etc. before attempting this.
+* You should have a films table in your database already from term 1. If you don't, you can download it from https://github.com/CIT2318/intro-to-mysql-sql/blob/master/films.sql and import it into phpmyadmin. Open up phpmyadmin to check this works.
 * Change the connection settings in *list.php* so that it works with your database.
 * Put  *list.php* on a server and check it works. A user should be able to view a list of all films from the database.
-* Now try and re-structure this PHP page so that it uses an MVC structure. 
+* Now try and re-structure this PHP page so that it uses an MVC structure.
 
-To start with create a new file, *film-model.php*. Add the following code (use your own connection settings):
+If you have a look in the models folder, there is a single file *film-model.php*. This contains a number of functions for working with a film database table e.g. *saveFilm*.
 
-```php
-function getConnection(){
-    try{
-       $conn = new PDO('mysql:host=localhost;dbname=u0123456', 'u0123456', '01jan96');
-       $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    }
-    catch (PDOException $exception) 
-    {
-        echo "Oh no, there was a problem" . $exception->getMessage();
-    }
-    return $conn;
-}
-function closeConnection($conn)
-{
-    $conn=null;
-}
-function getAllFilms()
-{
-    $conn = getConnection();
-    $query = "SELECT * FROM films";
-    $resultset = $conn->query($query);
-    $films = $resultset->fetchAll();
-    closeConnection($conn);
-    return $films;
-}
-```
+* Change *list.php* so that it includes *film-model.php* and calls the *getAllFilms* function.
+* Change *list.php* so that it loads *list-view.php* to display the list of films.
 
-* Open *list.php* in a text editor. 
-* Use an include or require statement to include the *film-model.php*.
-* Modify *list.php* so that it calls the *getAllFilms()* function. See the lecture slides if you get stuck. 
-* Separate the printing of the films as hyperlinks into a view (just like we did last week when separating logic from presentation).
-* *list.php* (your controller) should then look something like the following:
+ The code in *list.php* will then look like the following:
 
 ```php
-require_once("film-model.php");
+include "models/film-model.php";
 $films=getAllFilms();
 $title="List all films";
-include "list-view.php";
+include "views/list-view.php";
 ```
+
 * Take a moment to really understand how the code in these files has been organised.
+  - *list.php* is your controller.
+  - *film-model.php* is the model.
+  - *list-view.php* is the view.
+
 * Try and do the same for the other pages in the site.
   * Start with *details.php*.
-  * Move all database related code into functions in the film-model.php file
-  * Move the HTML and code for outputting data into a view file. 
+  * Call the functions in the *film-model.php* file to retrieve data from the database.
+  * Move the HTML and code for outputting data into a view file, save this in the views folder and include this file.
