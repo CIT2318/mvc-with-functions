@@ -6,7 +6,7 @@ This practical looks at moving from an application built using single flat PHP f
 * Put  *list.php* on a server and check it works. A user should be able to view a list of all films from the database.
 * Now try and re-structure this PHP page so that it uses an MVC structure.
 
-If you have a look in the models folder, there is a single file *film-model.php*. This contains a number of functions for working with a film database table e.g. *saveFilm*.
+If you have a look in the models folder, there is a single file, *film-model.php*. This contains a number of functions for working with a film database table e.g. *getFilmsById*, *saveFilm*, *deleteFilms* etc.
 
 * Change *list.php* so that it includes *film-model.php* and calls the *getAllFilms* function.
 * Change *list.php* so that it loads *list-view.php* to display the list of films.
